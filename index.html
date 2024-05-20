@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan</title>
+</head>
+<body>
+    <table id="example-table">
+        <tr>
+            <td>Nama</td>
+            <td>Usia</td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>25</td>
+        </tr>
+    </table>
+    <br>
+    <button id="dl-pdf">Download as PDF</button>
+    <script src="html2pdf.bundle.min.js"></script>
+    <script type="text/javascript">
+        document.getElementById('dl-pdf').onclick = function() {
+            var element = document.getElementById('example-table');
+
+            var opt = {
+                margin: 1,
+                filename: 'myfile.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf(element, opt);
+        }
+    </script>
+</body>
+</html>
